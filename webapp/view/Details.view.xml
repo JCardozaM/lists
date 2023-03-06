@@ -1,0 +1,85 @@
+<mvc:View controllerName="list.controller.Details" 
+          xmlns="sap.m" 
+          xmlns:core="sap.ui.core" 
+          xmlns:layout="sap.ui.layout"
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true">
+
+    <Page title="{i18n>details}" navButtonPress="onNavBack">
+        <customHeader>
+            <Bar >
+                <contentLeft>
+                    <Button icon="sap-icon://nav-back" press="onNavBack"/>
+                </contentLeft>
+                <contentMiddle>
+                    <Text text="{i18n>details}"/>
+                </contentMiddle>
+                <contentRight>
+                    <Button icon="sap-icon://excel-attachment" press="exportToExcel"/>
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <Table id="orderDetails"
+                   items="{
+                           path: 'Orders',
+                           sorter: {
+                              path: '/OrdenId',
+                              descending: 'true'
+                           }
+                           }"
+                    growing="true"
+                    growingThreshold="100"
+                    growingScrollToLoad="true">
+            
+                <columns >
+                    <Column>
+                        <Label text="{i18n>ordenId}"/>
+                    </Column>
+
+                    <Column >
+                        <Label text="{i18n>operation}"/>
+                    </Column>
+
+                    <Column >
+                        <Label text="{i18n>notificationQty}"/>
+                    </Column>
+
+                    <Column >
+                        <Label text="{i18n>weight}"/>
+                        <footer>
+                            <Text text="Buscar la manera de sumar"/>
+                        </footer>
+                    </Column>
+
+                    <Column >
+                        <Label text="{i18n>unit1}"/>
+                        <footer>
+                            <Text text="Kgs"/>
+                        </footer>
+                    </Column>
+
+                    <Column >
+                        <Label text="{i18n>img}"/>
+                    </Column>
+                    
+                </columns>
+
+                <items>
+                    <ColumnListItem >
+                        
+                        <cells>
+                            <ObjectIdentifier title="{OrdenId}"/>
+                            <Text text="{Operation}"/>
+                            <Text text="{NotificationQty}"/>
+                            <Text text="{Weight}"/>
+                            <Text text="{Unit1}"/>
+                            <Image src="img/esj.jpg" width="2rem"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
